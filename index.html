@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Labeler</title>
+  </head>
+  <body>
+    <h1>Drop a csv file here</h1>
+    <form ref='uploadForm'
+      id='uploadForm'
+      action='https://upload-webm.herokuapp.com/upload'
+      encType="multipart/form-data">
+      <input type="file" name="sampleFile"/>
+      <input type='submit' value='Read it' />
+    </form>
+
+    <!-- Add here a div that lets you see the ts -->
+
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>
