@@ -16,18 +16,22 @@ document.getElementById('btnLoad').addEventListener('click', () => {
 })
 
 function loadSettings() {
-    d3.csv("../../csvs/settings/" + filename + "-settings.csv").then(function (rs) {
+    d3.csv("csvs/settings/" + filename + "-settings.csv").then(function (rs) {
         rs.forEach(s => {
             console.log(s)
             addMenuItem(s)
         });
+        document.getElementById('dropdown-menu-items').children[0].click()
     }).catch((error) => {
         console.log("Settigns file not found!")
         seed = 1;
         for (i = 1; i <= 10; i++) {
             addMenuItem({ regionName: `Region_${i}`, regionClass: `Region_${i}`, colorHEX: getRandomColor() })
         }
+        document.getElementById('dropdown-menu-items').children[0].click()
     });
+
+
 }
 
 function getRandomColor() {
@@ -38,24 +42,6 @@ function getRandomColor() {
     }
     console.log(color)
     return color;
-}
-
-function loadRegions() {
-
-    const myNode = document.getElementById('dropdown-menu-items');
-    while (myNode.firstChild) {
-        myNode.removeChild(myNode.firstChild);
-    }
-    d3.csv("../../csvs/regions/" + filename + "-regions.csv").then(function (rs) {
-        rs.forEach(r => {
-            r.start = new Date(r.start)
-            r.end = new Date(r.end)
-            this.regions.push(r)
-        });
-        chart.flush();
-    }).catch((error) => {
-        console.log("Regions file not found!")
-    });
 }
 
 function addMenuItem(settings) {
@@ -77,8 +63,26 @@ function addMenuItem(settings) {
     document.getElementsByTagName('head')[0].appendChild(style);
 }
 
+function loadRegions() {
+
+    const myNode = document.getElementById('dropdown-menu-items');
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+    d3.csv("csvs/regions/" + filename + "-regions.csv").then(function (rs) {
+        rs.forEach(r => {
+            r.start = new Date(r.start)
+            r.end = new Date(r.end)
+            this.regions.push(r)
+        });
+        chart.flush();
+    }).catch((error) => {
+        console.log("Regions file not found!")
+    });
+}
+
 function loadData() {
-    d3.csv("../../csvs/" + filename + ".csv").then((data) => {
+    d3.csv("csvs/" + filename + ".csv").then((data) => {
         this.slice = 200;
         this.low = 0;
         this.high = this.slice * 5;
