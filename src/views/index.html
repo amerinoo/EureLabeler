@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>EureLabeler</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="../../styles/style.css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.8/c3.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.8/c3.css" rel="stylesheet" type="text/css">
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</head>
+
+<body>
+  <div id="header">
+    <div>
+      <img id="logo" src="../../images/logo.png">
+    </div>
+
+    <div id="regionContainer">
+      <!-- <input id="regionName" type="text" class="form-control" placeholder="Region name"> -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </button>
+        <div id="dropdown-menu-items" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        </div>
+      </div>
+      <button id="btnAddRegion" class="btn btn-success">Add region</button>
+    </div>
+
+    <div>
+      <button id="btnMinus" class="btn btn-primary">-</button>
+      <button id="btnPlus" class="btn btn-primary">+</button>
+    </div>
+
+    <div>
+      <button id="btnLoad" class="btn btn-info">Load</button>
+      <button id="btnExport" class="btn btn-dark">Export</button>
+    </div>
+
+  </div>
+  <div id="chart"></div>
+  <script src="../index.js"></script>
+</body>
+
+</html>
