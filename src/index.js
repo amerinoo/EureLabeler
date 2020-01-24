@@ -1,4 +1,5 @@
 var values_mem;
+var base_path = ""
 document.getElementById('btnLoad').addEventListener('click', () => {
     var input = document.createElement('input');
     input.type = 'file';
@@ -6,8 +7,10 @@ document.getElementById('btnLoad').addEventListener('click', () => {
 
     input.onchange = e => {
         var file = e.target.files[0];
+        console.log(file)
         filename = file.name.split(".")[0];
-        console.log("Loading file", this.filename)
+        base_path = "file:///" + file.path.split(filename)[0];
+        console.log("Loading file", this.filename, " ", base_path)
         loadSettings();
         loadData();
         loadRegions();
@@ -16,7 +19,7 @@ document.getElementById('btnLoad').addEventListener('click', () => {
 })
 
 function loadSettings() {
-    d3.csv("csvs/settings/" + filename + "-settings.csv").then(function (rs) {
+    d3.csv(base_path + "settings/" + filename + "-settings.csv").then(function (rs) {
         rs.forEach(s => {
             console.log(s)
             addMenuItem(s)
@@ -69,7 +72,7 @@ function loadRegions() {
     while (myNode.firstChild) {
         myNode.removeChild(myNode.firstChild);
     }
-    d3.csv("csvs/regions/" + filename + "-regions.csv").then(function (rs) {
+    d3.csv(base_path + "regions/" + filename + "-regions.csv").then(function (rs) {
         rs.forEach(r => {
             r.start = new Date(r.start)
             r.end = new Date(r.end)
@@ -82,7 +85,7 @@ function loadRegions() {
 }
 
 function loadData() {
-    d3.csv("csvs/" + filename + ".csv").then((data) => {
+    d3.csv(base_path + filename + ".csv").then((data) => {
         this.slice = 200;
         this.low = 0;
         this.high = this.slice * 5;
