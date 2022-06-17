@@ -16,7 +16,7 @@
   ],
   "author": "Albert Merino",
   "devDependencies": {
-    "electron": "^7.0.0"
+    "electron": "^15.5.5"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
